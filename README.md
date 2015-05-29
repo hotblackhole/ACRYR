@@ -27,24 +27,71 @@ This application requires:
 - Rails 4.2.1
 
 Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.html).
-
-Getting Started
+Project status
 ---------------
+ - Dev : Iteration 0
+ - Prod  : Iteration 0
+
+Features to do
+---------------
+ - Iteration 0
+    - Scaffold claims (CRUD)
+        - Has one user
+        - Has one description
+        - Has one title
+        - Has one client picture evidence
+        - Has one or many issue picture evidence
+    - Integrate claims with users
+        - Has zero to many issues
+
+Changelog
+---------------
+ - Iteration 0
+    - User login
+    - User register
+    - User roles
+    - Userspace
 
 Documentation and Support
 -------------------------
+ - Specs : https://github.com/ranska/infres_2015
 
 Issues
 -------------
 
-Similar Projects
-----------------
-
-Contributing
+Contributers
 ------------
+https://github.com/yojolo
+https://github.com/Uwy
+https://github.com/Nakou
+https://github.com/CharlesCoque
+https://github.com/HotBlackHole
 
 Credits
 -------
+https://github.com/RailsApps/rails_apps_composer
+// The usual (rails, ruby etc)
 
 License
 -------
+The MIT License (MIT)
+
+Copyright (c) 2015 yojolo, Uwy, Nakou, CharlesCoque, HotBlackHole
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
