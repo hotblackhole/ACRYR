@@ -1,4 +1,5 @@
 class ClaimsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_claim, only: [:show, :edit, :update, :destroy]
 
   # GET /claims
@@ -25,6 +26,7 @@ class ClaimsController < ApplicationController
   # POST /claims.json
   def create
     @claim = Claim.new(claim_params)
+    @claim.user_id = current_user.id
 
     respond_to do |format|
       if @claim.save
@@ -69,6 +71,6 @@ class ClaimsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def claim_params
-      params.require(:claim).permit(:title, :description, :client_picture_evidence_url, :user_id)
+      params.require(:claim).permit(:title, :description, :client_picture_evidence_url)
     end
 end

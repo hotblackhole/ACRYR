@@ -13,9 +13,9 @@ div class="page-header"
       dt.label.label-default= model_class.human_attribute_name(:client_picture_evidence_url)
       dd
         pre.prettyprint= @claim.client_picture_evidence_url
-      dt.label.label-default= model_class.human_attribute_name(:user_id)
+      dt.label.label-default= User
       dd
-        pre.prettyprint= @claim.user_id
+        pre.prettyprint= User.find(@claim.user_id).email
 
 .form-group
   = link_to t('.back', :default => t("helpers.links.back")), claims_path, :class => 'btn btn-default'

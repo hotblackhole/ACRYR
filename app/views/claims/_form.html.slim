@@ -12,10 +12,6 @@
     .col-md-10
       = f.text_field :client_picture_evidence_url, :class => 'text_field form-control'
   .form-group
-    = f.label :user_id, :class => 'control-label col-md-2'
-    .col-md-10
-      = f.text_field :user_id, :class => 'text_field form-control'
-  .form-group
     .col-md-offset-2.col-md-10
       = f.submit nil, :class => 'btn btn-primary'
       = link_to t('.cancel', :default => t("helpers.links.cancel")), claims_path, :class => 'btn btn-default'

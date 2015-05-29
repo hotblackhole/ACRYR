@@ -8,7 +8,7 @@ table.table.table-striped
       th= model_class.human_attribute_name(:title)
       th= model_class.human_attribute_name(:description)
       th= model_class.human_attribute_name(:client_picture_evidence_url)
-      th= model_class.human_attribute_name(:user_id)
+      th= User
       th= model_class.human_attribute_name(:created_at)
       th=t '.actions', :default => t("helpers.actions")
   tbody
@@ -18,7 +18,7 @@ table.table.table-striped
         td= claim.title
         td= claim.description
         td= claim.client_picture_evidence_url
-        td= claim.user_id
+        td= User.find(claim.user_id)
         td=l claim.created_at, format: :long
         td
           = link_to claim_path(claim), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do
