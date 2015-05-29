@@ -1,0 +1,21 @@
+= form_for @claim do |f|
+  - if @claim.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@claim.errors.count, "error")} prohibited this claim from being saved:"
+      ul
+        - @claim.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :description
+    = f.text_area :description
+  .field
+    = f.label :client_picture_evidence_url
+    = f.text_field :client_picture_evidence_url
+  .field
+    = f.label :user_id
+    = f.number_field :user_id
+  .actions = f.submit

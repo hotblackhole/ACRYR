@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Title:
+  = @claim.title
+p
+  strong Description:
+  = @claim.description
+p
+  strong Client picture evidence url:
+  = @claim.client_picture_evidence_url
+p
+  strong User:
+  = @claim.user_id
+
+= link_to 'Edit', edit_claim_path(@claim)
+'|
+= link_to 'Back', claims_path

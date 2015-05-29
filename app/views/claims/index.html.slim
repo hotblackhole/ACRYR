@@ -1,0 +1,27 @@
+h1 Listing claims
+
+table
+  thead
+    tr
+      th Title
+      th Description
+      th Client picture evidence url
+      th User
+      th
+      th
+      th
+
+  tbody
+    - @claims.each do |claim|
+      tr
+        td = claim.title
+        td = claim.description
+        td = claim.client_picture_evidence_url
+        td = claim.user_id
+        td = link_to 'Show', claim
+        td = link_to 'Edit', edit_claim_path(claim)
+        td = link_to 'Destroy', claim, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Claim', new_claim_path
