@@ -1,8 +1,4 @@
-h1 Editing claim
-
-== render 'form'
-
-= link_to 'Show', @claim
-'|
-= link_to 'Back', claims_path
-
+- model_class = Claim
+div class="page-header"
+  h1=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize
+= render :partial => "form"

@@ -1,21 +1,21 @@
-= form_for @claim do |f|
-  - if @claim.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@claim.errors.count, "error")} prohibited this claim from being saved:"
-      ul
-        - @claim.errors.full_messages.each do |message|
-          li = message
-
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :description
-    = f.text_area :description
-  .field
-    = f.label :client_picture_evidence_url
-    = f.text_field :client_picture_evidence_url
-  .field
-    = f.label :user_id
-    = f.number_field :user_id
-  .actions = f.submit
+= form_for @claim, :html => { :class => "form-horizontal" } do |f|
+  .form-group
+    = f.label :title, :class => 'control-label col-md-2'
+    .col-md-10
+      = f.text_field :title, :class => 'text_field form-control'
+  .form-group
+    = f.label :description, :class => 'control-label col-md-2'
+    .col-md-10
+      = f.text_field :description, :class => 'text_field form-control'
+  .form-group
+    = f.label :client_picture_evidence_url, :class => 'control-label col-md-2'
+    .col-md-10
+      = f.text_field :client_picture_evidence_url, :class => 'text_field form-control'
+  .form-group
+    = f.label :user_id, :class => 'control-label col-md-2'
+    .col-md-10
+      = f.text_field :user_id, :class => 'text_field form-control'
+  .form-group
+    .col-md-offset-2.col-md-10
+      = f.submit nil, :class => 'btn btn-primary'
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), claims_path, :class => 'btn btn-default'
