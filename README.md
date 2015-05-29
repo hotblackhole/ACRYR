@@ -41,6 +41,7 @@ Features to do
         - Has one title
         - Has one client picture evidence
         - Has one or many issue picture evidence
+    - Paperclip support
     - Integrate claims with users
         - Has zero to many issues
 
