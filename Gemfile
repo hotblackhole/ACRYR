@@ -12,6 +12,7 @@ group :development, :test do
   gem 'spring'
 end
 gem 'bootstrap-sass'
+gem 'bootstrap-sass-extras'
 gem 'devise'
 gem 'devise_invitable'
 gem 'mysql2'
