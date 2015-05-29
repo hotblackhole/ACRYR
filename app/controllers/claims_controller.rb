@@ -71,6 +71,6 @@ class ClaimsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def claim_params
-      params.require(:claim).permit(:title, :description, :client_picture_evidence_url)
+      params.require(:claim).permit(:title, :description, :client_picture_evidence_path)
     end
 end
