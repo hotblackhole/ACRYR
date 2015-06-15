@@ -64,11 +64,11 @@ Issues
 
 Contributers
 ------------
-https://github.com/yojolo
-https://github.com/Uwy
-https://github.com/Nakou
-https://github.com/CharlesCoque
-https://github.com/HotBlackHole
+ - https://github.com/yojolo
+ - https://github.com/Uwy
+ - https://github.com/Nakou
+ - https://github.com/CharlesCoque
+ - https://github.com/HotBlackHole
 
 Credits
 -------
