@@ -35,13 +35,7 @@ Project status
 Features to do
 ---------------
  - Iteration 0
-    - Scaffold claims (CRUD)
-        - Has one user
-        - Has one description
-        - Has one title
-        - Has one client picture evidence
-        - Has one or many issue picture evidence
-    - Paperclip support
+    - Carrierwave support
     - Integrate claims with users
         - Has zero to many issues
 
@@ -52,6 +46,13 @@ Changelog
     - User register
     - User roles
     - Userspace
+    - Scaffold claims (CRUD)
+        - Has one user
+        - Has one description
+        - Has one title
+        - Has one client picture evidence
+        - Has one or many issue picture evidence
+
 
 Documentation and Support
 -------------------------
@@ -59,6 +60,7 @@ Documentation and Support
 
 Issues
 -------------
+ - Fix bug, user not displaying correctly in claims display
 
 Contributers
 ------------
