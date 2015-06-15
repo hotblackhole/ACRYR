@@ -7,13 +7,13 @@ div class="page-header"
       dt.label.label-default= model_class.human_attribute_name(:title)
       dd
         pre.prettyprint= @claim.title
-      dt.label.label-default= model_class.human_attribute_name(:description)
+      dt.label.label-default = model_class.human_attribute_name(:description)
       dd
         pre.prettyprint= @claim.description
-      dt.label.label-default= model_class.human_attribute_name(:client_picture_evidence_path)
+      dt.label.label-default = model_class.human_attribute_name(:picture)
       dd
-        pre.prettyprint= @claim.client_picture_evidence_path
-      dt.label.label-default= User
+        img src = @claim.picture.url
+      dt.label.label-default = model_class.human_attribute_name(:user)
       dd
         pre.prettyprint= User.find(@claim.user_id).email
 
