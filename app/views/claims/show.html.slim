@@ -10,10 +10,10 @@ div class="page-header"
       dt.label.label-default = model_class.human_attribute_name(:description)
       dd
         pre.prettyprint= @claim.description
-      dt.label.label-default = model_class.human_attribute_name(:claim)
+      dt.label.label-default = model_class.human_attribute_name(:picture)
       dd
-        img src = @claim.claim
-      dt.label.label-default = @claim.claim.current_path
+        img src = @claim.picture.url
+      dt.label.label-default = model_class.human_attribute_name(:user)
       dd
         pre.prettyprint= User.find(@claim.user_id).email
 

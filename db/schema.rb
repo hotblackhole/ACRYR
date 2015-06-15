@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20150615075934) do
     t.integer  "user_id",                      limit: 4
     t.datetime "created_at",                                 null: false
     t.datetime "updated_at",                                 null: false
-    t.string   "claim",                        limit: 255
+    t.string   "picture",                      limit: 255
   end
 
   create_table "users", force: :cascade do |t|

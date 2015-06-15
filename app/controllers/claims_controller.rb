@@ -31,7 +31,9 @@ class ClaimsController < ApplicationController
   # POST /claims.json
   def create
     @claim = Claim.new(claim_params)
+    logger.debug "{params}"
     @claim.user_id = current_user.id
+    @claim.picture = params[:picture]
     respond_to do |format|
       if @claim.save
         format.html { redirect_to @claim, notice: 'Claim was successfully created.' }
@@ -75,6 +77,6 @@ class ClaimsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def claim_params
-      params.require(:claim).permit(:title, :description, :client_picture_evidence_path)
+      params.require(:claim).permit(:title, :description, :picture)
     end
 end
