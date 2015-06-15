@@ -36,7 +36,23 @@ Features to do
 ---------------
  - Iteration 0
     - Carrierwave support
-    - Integrate claims with users
+ - Iteration 1
+    - At administrator level :
+        - See all claims in Claims/Index
+        - Can delete all claims
+        - Can edit only his claims
+    - Create link model users to claims to ensure many to many relationships for contributors
+    - Add ability to user to join himself to claim(s)
+ - Iteration 2
+    - Add field state in claims model (0 = Draft; 1 = published)
+        - The default state of a claim is Draft
+        - Draft claims are visible only for the creator and administrators
+        - Only creator and administrators can change the state of a claim
+
+    - Create message_claim model that contain claim_id, type (0=Rejected; 1=Indication) and message_content
+        - Messages are used by administrator when they reject a claim
+        - Only administrator can add/edit/delete messages
+        - The claim author see all his messages (but not the claim participants)
 
 Changelog
 ---------------
@@ -46,6 +62,7 @@ Changelog
     - User roles
     - Userspace
     - Has zero to many issues
+    - Integrate claims with users
     - Scaffold claims (CRUD)
         - Has one user
         - Has one description
@@ -53,6 +70,7 @@ Changelog
         - Has one client picture evidence
         - Has one or many issue picture evidence
         - Fix bug, user not displaying correctly in claims display
+        - Claims tab show only current logged user claims unless he's admin
 
 
 Documentation and Support
