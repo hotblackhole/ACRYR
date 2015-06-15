@@ -42,7 +42,7 @@ Features to do
         - Can delete all claims
         - Can edit only his claims
     - Create link model users to claims to ensure many to many relationships for contributors
-*    - Add ability to user to join himself to claim(s)
+    - Add ability to user to join himself to claim(s)
 
 Changelog
 ---------------
@@ -60,6 +60,7 @@ Changelog
         - Has one client picture evidence
         - Has one or many issue picture evidence
         - Fix bug, user not displaying correctly in claims display
+        - Claims tab show only current logged user claims unless he's admin
 
 
 Documentation and Support
