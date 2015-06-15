@@ -36,7 +36,13 @@ Features to do
 ---------------
  - Iteration 0
     - Carrierwave support
-    - Integrate claims with users
+ - Iteration 1
+    - At administrator level :
+        - See all claims in Claims/Index
+        - Can delete all claims
+        - Can edit only his claims
+    - Create link model users to claims to ensure many to many relationships for contributors
+*    - Add ability to user to join himself to claim(s)
 
 Changelog
 ---------------
@@ -46,6 +52,7 @@ Changelog
     - User roles
     - Userspace
     - Has zero to many issues
+    - Integrate claims with users
     - Scaffold claims (CRUD)
         - Has one user
         - Has one description

@@ -5,7 +5,12 @@ class ClaimsController < ApplicationController
   # GET /claims
   # GET /claims.json
   def index
-    @claims = Claim.all
+    if current_user.admin?
+        @claims = Claim.all
+    else
+        @claims = Claim.where(user_id: current_user.id)
+    end
+
   end
 
   # GET /claims/1
