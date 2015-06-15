@@ -27,7 +27,6 @@ class ClaimsController < ApplicationController
   def create
     @claim = Claim.new(claim_params)
     @claim.user_id = current_user.id
-
     respond_to do |format|
       if @claim.save
         format.html { redirect_to @claim, notice: 'Claim was successfully created.' }
