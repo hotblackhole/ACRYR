@@ -53,12 +53,14 @@ Changelog
         - Has one client picture evidence
         - Has one or many issue picture evidence
 
+
 Documentation and Support
 -------------------------
  - Specs : https://github.com/ranska/infres_2015
 
 Issues
 -------------
+ - Fix bug, user not displaying correctly in claims display
 
 Contributers
 ------------
