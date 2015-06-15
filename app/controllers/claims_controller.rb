@@ -1,5 +1,5 @@
 class ClaimsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:index, :new, :edit, :create, :destroy, :update]
   before_action :set_claim, only: [:show, :edit, :update, :destroy]
 
   # GET /claims

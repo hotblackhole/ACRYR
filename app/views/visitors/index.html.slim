@@ -1,0 +1,26 @@
+- model_class = Claim
+.page-header
+  h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+table.table.table-striped
+  thead
+    tr
+      th= model_class.human_attribute_name(:id)
+      th= model_class.human_attribute_name(:title)
+      th= model_class.human_attribute_name(:description)
+      th= model_class.human_attribute_name(:client_picture_evidence_path)
+      th= User
+      th= model_class.human_attribute_name(:created_at)
+      th
+  tbody
+    - @claims.each do |claim|
+      tr
+        td= claim.id
+        td= claim.title
+        td= claim.description
+        td= claim.client_picture_evidence_path
+        td= User.find(claim.user_id).email
+        td=l claim.created_at, format: :long
+        td
+            = link_to claim_path(claim), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do
+                span
+                    = 'Show'
