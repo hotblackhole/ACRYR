@@ -37,7 +37,6 @@ Features to do
  - Iteration 0
     - Carrierwave support
     - Integrate claims with users
-        - Has zero to many issues
 
 Changelog
 ---------------
@@ -46,12 +45,14 @@ Changelog
     - User register
     - User roles
     - Userspace
+    - Has zero to many issues
     - Scaffold claims (CRUD)
         - Has one user
         - Has one description
         - Has one title
         - Has one client picture evidence
         - Has one or many issue picture evidence
+        - Fix bug, user not displaying correctly in claims display
 
 
 Documentation and Support
@@ -60,7 +61,6 @@ Documentation and Support
 
 Issues
 -------------
- - Fix bug, user not displaying correctly in claims display
 
 Contributers
 ------------
