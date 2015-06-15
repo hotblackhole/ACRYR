@@ -43,6 +43,16 @@ Features to do
         - Can edit only his claims
     - Create link model users to claims to ensure many to many relationships for contributors
     - Add ability to user to join himself to claim(s)
+ - Iteration 2
+    - Add field state in claims model (0 = Draft; 1 = published)
+        - The default state of a claim is Draft
+        - Draft claims are visible only for the creator and administrators
+        - Only creator and administrators can change the state of a claim
+
+    - Create message_claim model that contain claim_id, type (0=Rejected; 1=Indication) and message_content
+        - Messages are used by administrator when they reject a claim
+        - Only administrator can add/edit/delete messages
+        - The claim author see all his messages (but not the claim participants)
 
 Changelog
 ---------------
