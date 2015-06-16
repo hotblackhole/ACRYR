@@ -35,7 +35,6 @@ Project status
 Features to do
 ---------------
  - Iteration 0
-    - Carrierwave support
  - Iteration 1
     - At administrator level :
         - See all claims in Claims/Index
@@ -57,12 +56,17 @@ Features to do
 Changelog
 ---------------
  - Iteration 0
+    - Carrierwave support
     - User login
     - User register
     - User roles
     - Userspace
     - Has zero to many issues
     - Integrate claims with users
+    - Multipicture upload support
+    - Created evidence model
+    - Map one to many Claim => evidence
+    - Evidence creation are handled in claim controller
     - Scaffold claims (CRUD)
         - Has one user
         - Has one description
