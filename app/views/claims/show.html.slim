@@ -10,12 +10,15 @@ div class="page-header"
       dt.label.label-default = model_class.human_attribute_name(:description)
       dd
         pre.prettyprint= @claim.description
-      dt.label.label-default = model_class.human_attribute_name(:picture)
-      dd
-        img src = @claim.picture.url
       dt.label.label-default = 'Author'
       dd
         pre.prettyprint= Participation.where(claim_id: @claim.id).where(author: true).first.user.email
+      dt.label.label-default = model_class.human_attribute_name(:picture)
+      dd
+        img src = @claim.picture.url
+      dt.label.label-default = model_class.human_attribute_name(:evidences)
+      - for evidence in @claim.evidences
+        img src = evidence.picture.url
 
 .form-group
   - if current_user.nil?

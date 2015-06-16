@@ -35,7 +35,6 @@ Project status
 Features to do
 ---------------
  - Iteration 0
-    - Carrierwave support
  - Iteration 1
     - At administrator level :
         - See all claims in Claims/Index
@@ -44,8 +43,8 @@ Features to do
     - Create participation model to link users to claims
     - Add ability to user to join himself to claim(s)
  - Iteration 2
-    - Add field state in claims model (0 = Draft; 1 = published)
-        - The default state of a claim is Draft
+    - Add field state in claims model (enum  draft, published)
+        - The default state of a claim is draft
         - Draft claims are visible only for the creator and administrators
         - Only creator and administrators can change the state of a claim
 
@@ -57,12 +56,17 @@ Features to do
 Changelog
 ---------------
  - Iteration 0
+    - Carrierwave support
     - User login
     - User register
     - User roles
     - Userspace
     - Has zero to many issues
     - Integrate claims with users
+    - Created evidence model
+        - Multipicture upload support
+        - Map one to many Claim => evidence
+        - Evidence creation are handled in claim controller
     - Scaffold claims (CRUD)
         - Has one user
         - Has one description

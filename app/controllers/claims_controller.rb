@@ -38,7 +38,6 @@ class ClaimsController < ApplicationController
   # POST /claims.json
   def create
     @claim = Claim.new(claim_params)
-    logger.debug "{params}"
 
     @participation = Participation.new
     @participation.user = current_user
@@ -48,6 +47,9 @@ class ClaimsController < ApplicationController
     @claim.picture = params[:picture]
     respond_to do |format|
       if @claim.save && @participation.save
+        params[:evidences].each do |picture|
+           @claim.evidences.create(picture: picture, claim_id: @claim.id)
+        end
         format.html { redirect_to @claim, notice: 'Claim was successfully created.' }
         format.json { render :show, status: :created, location: @claim }
       else
@@ -79,6 +81,9 @@ class ClaimsController < ApplicationController
   # DELETE /claims/1.json
   def destroy
     if current_user.admin? || @claim.user = current_user
+      @claim.evidences.each do |evidence|
+        evidence.destroy
+      end
       @claim.destroy
       respond_to do |format|
         format.html { redirect_to claims_url, notice: 'Claim was successfully destroyed.' }
