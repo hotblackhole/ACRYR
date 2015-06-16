@@ -31,11 +31,12 @@ class ClaimsController < ApplicationController
   # POST /claims.json
   def create
     @claim = Claim.new(claim_params)
-    logger.debug "{params}"
     @claim.user_id = current_user.id
-    @claim.picture = params[:picture]
     respond_to do |format|
       if @claim.save
+        params[:evidences].each do |picture|
+           @claim.evidences.create(picture: picture, claim_id: @claim.id)
+        end
         format.html { redirect_to @claim, notice: 'Claim was successfully created.' }
         format.json { render :show, status: :created, location: @claim }
       else
@@ -62,6 +63,9 @@ class ClaimsController < ApplicationController
   # DELETE /claims/1
   # DELETE /claims/1.json
   def destroy
+    @claim.evidences.each do |evidence|
+      evidence.destroy
+    end
     @claim.destroy
     respond_to do |format|
       format.html { redirect_to claims_url, notice: 'Claim was successfully destroyed.' }

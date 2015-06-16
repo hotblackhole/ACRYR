@@ -44,8 +44,8 @@ Features to do
     - Create link model users to claims to ensure many to many relationships for contributors
     - Add ability to user to join himself to claim(s)
  - Iteration 2
-    - Add field state in claims model (0 = Draft; 1 = published)
-        - The default state of a claim is Draft
+    - Add field state in claims model (enum  draft, published)
+        - The default state of a claim is draft
         - Draft claims are visible only for the creator and administrators
         - Only creator and administrators can change the state of a claim
 
