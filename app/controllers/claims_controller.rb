@@ -8,9 +8,13 @@ class ClaimsController < ApplicationController
     if current_user.admin?
         @claims = Claim.all
     else
-        @claims = Claim.where(user_id: current_user.id)
-    end
+        @participations = Participation.where(user_id: current_user.id).where(author: true)
 
+        @claims = []
+        @participations.each do |p|
+            @claims << p.claim
+        end
+    end
   end
 
   # GET /claims/1
@@ -25,6 +29,9 @@ class ClaimsController < ApplicationController
 
   # GET /claims/1/edit
   def edit
+      if @claim.user != current_user
+          redirect_to claims_url
+      end
   end
 
   # POST /claims
@@ -32,10 +39,15 @@ class ClaimsController < ApplicationController
   def create
     @claim = Claim.new(claim_params)
     logger.debug "{params}"
-    @claim.user_id = current_user.id
+
+    @participation = Participation.new
+    @participation.user = current_user
+    @participation.claim = @claim
+    @participation.author = true
+
     @claim.picture = params[:picture]
     respond_to do |format|
-      if @claim.save
+      if @claim.save && @participation.save
         format.html { redirect_to @claim, notice: 'Claim was successfully created.' }
         format.json { render :show, status: :created, location: @claim }
       else
@@ -48,24 +60,32 @@ class ClaimsController < ApplicationController
   # PATCH/PUT /claims/1
   # PATCH/PUT /claims/1.json
   def update
-    respond_to do |format|
-      if @claim.update(claim_params)
-        format.html { redirect_to @claim, notice: 'Claim was successfully updated.' }
-        format.json { render :show, status: :ok, location: @claim }
-      else
-        format.html { render :edit }
-        format.json { render json: @claim.errors, status: :unprocessable_entity }
+    if @claim.user == current_user
+      respond_to do |format|
+        if @claim.update(claim_params)
+          format.html { redirect_to @claim, notice: 'Claim was successfully updated.' }
+          format.json { render :show, status: :ok, location: @claim }
+        else
+          format.html { render :edit }
+          format.json { render json: @claim.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      redirect_to claims_url
     end
   end
 
   # DELETE /claims/1
   # DELETE /claims/1.json
   def destroy
-    @claim.destroy
-    respond_to do |format|
-      format.html { redirect_to claims_url, notice: 'Claim was successfully destroyed.' }
-      format.json { head :no_content }
+    if current_user.admin? || @claim.user = current_user
+      @claim.destroy
+      respond_to do |format|
+        format.html { redirect_to claims_url, notice: 'Claim was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      redirect_to claims_url
     end
   end
 

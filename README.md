@@ -41,7 +41,7 @@ Features to do
         - See all claims in Claims/Index
         - Can delete all claims
         - Can edit only his claims
-    - Create link model users to claims to ensure many to many relationships for contributors
+    - Create participation model to link users to claims
     - Add ability to user to join himself to claim(s)
  - Iteration 2
     - Add field state in claims model (0 = Draft; 1 = published)
