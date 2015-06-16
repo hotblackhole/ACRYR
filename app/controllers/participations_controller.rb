@@ -1,6 +1,6 @@
 class ParticipationsController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :new, :edit, :create, :destroy, :update]
-  before_action :set_participation, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:index, :create, :destroy]
+  before_action :set_participation, only: [:destroy]
 
   # GET /participations
   # GET /participations.json
@@ -8,22 +8,8 @@ class ParticipationsController < ApplicationController
     if current_user.admin?
         @participations = Participation.all
     else
-        @participations = Participation.pending.where(user_id: => current_user.id)
+        @participations = Participation.where(user_id: current_user.id)
     end
-  end
-
-  # GET /participations/1
-  # GET /participations/1.json
-  def show
-  end
-
-  # GET /participations/new
-  def new
-    @participation = Participation.new
-  end
-
-  # GET /participations/1/edit
-  def edit
   end
 
   # POST /participations
@@ -37,20 +23,6 @@ class ParticipationsController < ApplicationController
         format.json { render :show, status: :created, location: @participation }
       else
         format.html { render :new }
-        format.json { render json: @participation.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /participations/1
-  # PATCH/PUT /participations/1.json
-  def update
-    respond_to do |format|
-      if @participation.update(participation_params)
-        format.html { redirect_to @participation, notice: 'Participation was successfully updated.' }
-        format.json { render :show, status: :ok, location: @participation }
-      else
-        format.html { render :edit }
         format.json { render json: @participation.errors, status: :unprocessable_entity }
       end
     end

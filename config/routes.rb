@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :participations
+  get 'participations/', to: 'participations#index'
+  delete 'participations/:id', to: 'participations#destroy', as: 'participation'
+
   resources :claims
   mount Upmin::Engine => '/admin'
   root to: 'visitors#index'
