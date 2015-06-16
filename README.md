@@ -63,10 +63,10 @@ Changelog
     - Userspace
     - Has zero to many issues
     - Integrate claims with users
-    - Multipicture upload support
     - Created evidence model
-    - Map one to many Claim => evidence
-    - Evidence creation are handled in claim controller
+        - Multipicture upload support
+        - Map one to many Claim => evidence
+        - Evidence creation are handled in claim controller
     - Scaffold claims (CRUD)
         - Has one user
         - Has one description
