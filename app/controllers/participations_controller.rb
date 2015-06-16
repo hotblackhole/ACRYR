@@ -1,5 +1,5 @@
 class ParticipationsController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :create, :destroy]
+  before_action :authenticate_user!, only: [:index, :join, :destroy]
   before_action :set_participation, only: [:destroy]
 
   # GET /participations
@@ -12,18 +12,18 @@ class ParticipationsController < ApplicationController
     end
   end
 
-  # POST /participations
-  # POST /participations.json
-  def create
-    @participation = Participation.new(participation_params)
+  # GET /participations/join/1
+  def join
+    @participation = Participation.new
+    @participation.user = current_user
+    @participation.claim_id = params[:claim_id]
+    @participation.author = false
 
     respond_to do |format|
       if @participation.save
-        format.html { redirect_to @participation, notice: 'Participation was successfully created.' }
-        format.json { render :show, status: :created, location: @participation }
+        format.html{ redirect_to root_path, notice: 'Participation was successfully created.' }
       else
-        format.html { render :new }
-        format.json { render json: @participation.errors, status: :unprocessable_entity }
+        format.html{ redirect_to root_path, notice: 'Oops, you can\'t to this claim !' }
       end
     end
   end
@@ -31,8 +31,10 @@ class ParticipationsController < ApplicationController
   # DELETE /participations/1
   # DELETE /participations/1.json
   def destroy
-    if @participation.author = true
-        @participation.claim.destroy
+    if @participation.author == true
+        @claim = @participation.claim
+        Participation.where(claim_id: @claim.id).destroy_all
+        @claim.destroy
     end
     @participation.destroy
     respond_to do |format|
@@ -45,10 +47,5 @@ class ParticipationsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_participation
       @participation = Participation.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def participation_params
-      params.require(:participation).permit(:user_id, :claim_id, :author)
     end
 end
