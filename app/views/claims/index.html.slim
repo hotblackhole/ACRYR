@@ -9,6 +9,7 @@ table.table.table-striped
       th= model_class.human_attribute_name(:description)
       th= 'Author'
       th= model_class.human_attribute_name(:created_at)
+      th= 'State'
       th=t '.actions', :default => t("helpers.actions")
   tbody
     - @claims.each do |claim|
@@ -18,12 +19,13 @@ table.table.table-striped
         td= claim.description
         td= Participation.where(claim_id: claim.id).where(author: true).first.user.email
         td=l claim.created_at, format: :long
+        td= claim.state.humanize
         td
             = link_to claim_path(claim), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do
                 span
                     = 'Show'
 
-            - if current_user == Participation.where(claim_id: claim.id).where(author: true).first
+            - if current_user == Participation.where(claim_id: claim.id).where(author: true).first.user
                 = link_to edit_claim_path(claim), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do
                     span
                         = 'Edit'

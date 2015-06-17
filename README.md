@@ -46,12 +46,16 @@ Features to do
     - Add field state in claims model (enum  draft, published)
         - The default state of a claim is draft
         - Draft claims are visible only for the creator and administrators
-        - Only creator and administrators can change the state of a claim
+        - Creator can change the state of a claim
 
-    - Create message_claim model that contain claim_id, type (0=Rejected; 1=Indication) and message_content
+    - Create message_claim model that contain claim_id, type (enum rejection, indication) and message_content
         - Messages are used by administrator when they reject a claim
         - Only administrator can add/edit/delete messages
         - The claim author see all his messages (but not the claim participants)
+
+    - Add a button to enable administrator to ask for modification of a claim
+        - Create a message for the claim
+        - Change claim state to draft
 
 Changelog
 ---------------
