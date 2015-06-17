@@ -9,7 +9,6 @@ class ClaimsController < ApplicationController
         @claims = Claim.all
     else
         @participations = Participation.where(user_id: current_user.id).where(author: true)
-
         @claims = []
         @participations.each do |p|
             @claims << p.claim
@@ -43,23 +42,18 @@ class ClaimsController < ApplicationController
     @participation.user = current_user
     @participation.claim = @claim
     @participation.author = true
-
-    @claim.picture = params[:picture]
-
     respond_to do |format|
       if @claim.save && @participation.save
-
-        params[:evidences].each do |picture|
-           @claim.evidences.create(picture: picture, claim_id: @claim.id)
+        if !params[:evidences].nil?
+          params[:evidences].each do |picture|
+            @claim.evidences.create(picture: picture, claim_id: @claim.id)
+          end
         end
-
         format.html { redirect_to @claim, notice: 'Claim was successfully created.' }
         format.json { render :show, status: :created, location: @claim }
-
       else
         format.html { render :new }
         format.json { render json: @claim.errors, status: :unprocessable_entity }
-
       end
     end
   end
