@@ -1,5 +1,5 @@
 class Claim < ActiveRecord::Base
-  belongs_to :user
-  has_many :evidences
-  mount_uploader :picture, ClaimUploader
+    has_many :participations
+    has_many :evidences
+    mount_uploader :picture, ClaimUploader
 end

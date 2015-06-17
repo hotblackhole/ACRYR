@@ -16,7 +16,6 @@ ActiveRecord::Schema.define(version: 20150616082816) do
   create_table "claims", force: :cascade do |t|
     t.string   "title",       limit: 255
     t.text     "description", limit: 65535
-    t.integer  "user_id",     limit: 4
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.string   "picture",     limit: 255
@@ -30,6 +29,14 @@ ActiveRecord::Schema.define(version: 20150616082816) do
   end
 
   add_index "evidences", ["claim_id"], name: "index_evidences_on_claim_id", using: :btree
+
+  create_table "participations", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "claim_id",   limit: 4
+    t.boolean  "author",     limit: 1
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
