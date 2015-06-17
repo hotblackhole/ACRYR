@@ -29,7 +29,7 @@ class ClaimsController < ApplicationController
 
   # GET /claims/1/edit
   def edit
-      if @claim.user != current_user
+      if current_user != Participation.where(claim_id: @claim.id).where(author: true).first.user
           redirect_to claims_url
       end
   end
@@ -45,16 +45,21 @@ class ClaimsController < ApplicationController
     @participation.author = true
 
     @claim.picture = params[:picture]
+
     respond_to do |format|
       if @claim.save && @participation.save
+
         params[:evidences].each do |picture|
            @claim.evidences.create(picture: picture, claim_id: @claim.id)
         end
+
         format.html { redirect_to @claim, notice: 'Claim was successfully created.' }
         format.json { render :show, status: :created, location: @claim }
+
       else
         format.html { render :new }
         format.json { render json: @claim.errors, status: :unprocessable_entity }
+
       end
     end
   end
@@ -62,7 +67,7 @@ class ClaimsController < ApplicationController
   # PATCH/PUT /claims/1
   # PATCH/PUT /claims/1.json
   def update
-    if @claim.user == current_user
+    if current_user == Participation.where(claim_id: @claim.id).where(author: true).first.user
       respond_to do |format|
         if @claim.update(claim_params)
           format.html { redirect_to @claim, notice: 'Claim was successfully updated.' }
@@ -102,6 +107,6 @@ class ClaimsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def claim_params
-      params.require(:claim).permit(:title, :description, :picture)
+      params.require(:claim).permit(:title, :description, :state, :picture)
     end
 end

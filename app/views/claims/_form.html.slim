@@ -8,6 +8,10 @@
     .col-md-10
       = f.text_field :description, :class => 'text_field form-control'
   .form-group
+    = f.label :state, :class => 'control-label col-md-2'
+    .col-md-10
+    = f.select :state, Claim.states.keys.to_a.map { |w| [w.humanize, w] }
+  .form-group
     = f.label :picture, :class => 'control-label col-md-2'
     .col-md-10
       = f.file_field :picture, :class => 'file_field form-control'
