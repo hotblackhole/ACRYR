@@ -48,7 +48,7 @@ Features to do
         - Draft claims are visible only for the creator and administrators
         - Creator can change the state of a claim
 
-    - Create message_claim model that contain claim_id, type (enum rejection, indication) and message_content
+    - Create claim revue model that contain claim_id, type (enum reject, improve) and content
         - Messages are used by administrator when they reject a claim
         - Only administrator can add/edit/delete messages
         - The claim author see all his messages (but not the claim participants)
