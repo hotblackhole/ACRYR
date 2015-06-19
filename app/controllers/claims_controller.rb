@@ -1,6 +1,6 @@
 class ClaimsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :new, :edit, :create, :destroy, :update]
-  before_action :set_claim, only: [:show, :edit, :update, :destroy]
+  before_action :set_claim, only: [:show, :edit, :update, :destroy, :send_email]
 
   # GET /claims
   # GET /claims.json
@@ -87,6 +87,23 @@ class ClaimsController < ApplicationController
       @claim.destroy
       respond_to do |format|
         format.html { redirect_to claims_url, notice: 'Claim was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      redirect_to claims_url
+    end
+  end
+
+  def send_email
+    if current_user.admin? && !@claim.mailSend
+      require 'application_mailer'
+      ApplicationMailer.send_mail_claim(@claim)
+
+      @claim.mailSend = true
+      @claim.save
+
+      respond_to do |format|
+        format.html { redirect_to claims_url, notice: 'Mail was successfully changed.' }
         format.json { head :no_content }
       end
     else

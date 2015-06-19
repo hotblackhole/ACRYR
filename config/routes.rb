@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   delete 'participations/:id', to: 'participations#destroy', as: 'participation'
 
   resources :claims
+  get 'claims/:id/sendmail', to: 'claims#send_email', as: 'claim_send_email'
   mount Upmin::Engine => '/admin'
   root to: 'visitors#index'
   devise_for :users
