@@ -37,7 +37,7 @@ Features to do
  - Iteration 0
  - Iteration 1
  - Iteration 2
-    - Send mail when a claim has been joined by 10 users, when a claim has been deleted or reviewed
+    - , when a claim has been deleted or reviewed
 
 Changelog
 ---------------
@@ -81,6 +81,7 @@ Changelog
           - Create a message for the claim
           - Change claim state to draft
       - Added mail support
+        - Send mail when a claim has been joined by 10 users
 
 
 Documentation and Support
