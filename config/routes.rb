@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :reviews
+  get 'reviews/new/:claim_id', to: 'reviews#new', as: 'review_new'
   get 'participations/join/:claim_id', to: 'participations#join', as: 'participation_join'
 
   get 'participations/', to: 'participations#index'

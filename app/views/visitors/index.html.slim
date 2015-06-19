@@ -25,6 +25,6 @@ table.table.table-striped
                         = 'Show'
                 - if !current_user.nil? && Participation.where(claim_id: claim.id).where(user_id: current_user.id).count == 0
 
-                     = link_to participation_join_path(claim), :class => 'btn btn-xs', :title =>"Participe to the claim" do
+                     = link_to participation_join_path(claim), :class => 'btn btn-xs', :title =>"Join the claim" do
                       span
                           = 'Contribute'
