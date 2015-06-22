@@ -111,6 +111,16 @@ class ClaimsController < ApplicationController
     end
   end
 
+  def send_multiple_emails
+    Claim.all.each do |claim|
+      if !claim.mailSend && claim.created_at < Date.now-30.seconds
+        send_mail_claim(claim)
+        claim.mailSend = true
+        claim.save
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_claim

@@ -10,17 +10,7 @@ class ApplicationMailer < ActionMailer::Base
     if claim.is_a?(Claim)
       subject= claim.title << " [ACRYR]"
       content= claim.title << "\n " << claim.content << "\n" << claim_path(claim) << "\n See you soon"
-      send_mail( from: "yoann.lm@laposte.net", to: "romain.jean30@gmail.com", subject: subject, body: content)
-    end
-  end
-
-  def send_mails_for_expired_claims
-    Claim.all.each do |claim|
-      if !claim.mailSend && claim.created_at < Date.now-30.days
-        send_mail_claim(claim)
-        claim.mailSend = true
-        claim.save
-      end
+      send_mail( from: "yoann.lm@laposte.net", to: "romain.jean30@gmail.com", subject: subject, body: content).deliver
     end
   end
 

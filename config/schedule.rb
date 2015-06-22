@@ -20,5 +20,5 @@
 # Learn more: http://github.com/javan/whenever
 
 every 1.day, :at => "00:00 am" do
-  runner "ApplicationMailer.send_mails_for_expired_claims"
+  runner "ClaimsController.send_multiple_emails"
 end
